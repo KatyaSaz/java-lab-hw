@@ -3,9 +3,7 @@ package hw.game;
 public class Main {
 	public static void main(String[] args) {
 		//initialization
-		Model model = new Model();
-		View view  = new View();
-		Controller controller  = new Controller(model, view);
+		Controller controller  = new Controller(new Model(), new View());
 		//start up
 		controller.workMethod();
 	}

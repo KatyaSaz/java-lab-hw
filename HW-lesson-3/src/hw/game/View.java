@@ -1,5 +1,7 @@
 package hw.game;
 
+import java.util.List;
+
 public class View {
 
 	public static final String START_WORDS = "Hi! Let's play. Try to guess the number";
@@ -20,5 +22,15 @@ public class View {
 	public void printDiap(int min, int max) {
 		System.out.println("Input INT number from " + min + " to " + max + ":");
 
+	}
+	
+	//prepare elements of ArrayList for output
+	public String prepareAttemptsToPrint(List<Integer> attempts) {
+		StringBuilder concatString = new StringBuilder();
+		for (Integer attempt : attempts) {
+			concatString = concatString.append(attempt+" ");
+		}
+		return new String(concatString);
+		
 	}
 }

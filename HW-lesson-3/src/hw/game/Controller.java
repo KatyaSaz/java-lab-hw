@@ -8,26 +8,13 @@ public class Controller {
 
 	private Model model;
 	private View view;
-	
-	private List<Integer> attempts;
+
 
 	// constructor
 	public Controller(Model model, View view) {
 		super();
 		this.model = model;
 		this.view = view;
-		attempts = new ArrayList<>();
-	}
-	
-
-	//prepare elements of ArrayList for output
-	public void printAttempts(List<Integer> attempts) {
-		view.printMessageWithNumber(view.OUTPUT_ATTEMPTS_AMOUNT, attempts.size());
-		String str = "";
-		for (Integer attempt : attempts) {
-			str += attempt + " ";
-		}
-		view.printMessage(view.OUTPUT_ATTEMPTS + str);
 	}
 
 	// work method call from main
@@ -42,7 +29,7 @@ public class Controller {
 
 		while (true) {
 			int inputValue = inputNumberWithScanner(sc, model.getMinBorder(), model.getMaxBorder());
-			attempts.add(inputValue);
+			model.getAttempts().add(inputValue);
 			if (inputValue == model.getRandValue()) {
 				break;
 			} else {
@@ -51,7 +38,8 @@ public class Controller {
 		}
 		
 		view.printMessageWithNumber(view.OUTPUT_RESULT_NUMBER, model.getRandValue());
-		printAttempts(attempts);
+		view.printMessageWithNumber(view.OUTPUT_ATTEMPTS_AMOUNT, model.getAttempts().size());
+		view.printMessage(view.OUTPUT_ATTEMPTS + view.prepareAttemptsToPrint(model.getAttempts()));
 		
 	}
 
