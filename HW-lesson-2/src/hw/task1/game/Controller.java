@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class Controller {
 
-	public static final int MIN = 0;
-	public static final int MAX = 100;
+	
 	public static final String BIGGER = "bigger";
 	public static final String LOWER = "lower";
 
@@ -46,13 +45,13 @@ public class Controller {
 
 	// work method call from main
 	public void workMethod() {
-		rand = randomGenerate(MIN, MAX);
+		rand = randomGenerate(model.getMin(), model.getMax());
 
 		Scanner sc = new Scanner(System.in);
 		view.printMessage(view.START_WORDS);
 
 		while (true) {
-			model.setValue(inputNumberWithScanner(sc, MIN, MAX));
+			model.setValue(inputNumberWithScanner(sc, model.getMin(), model.getMax()));
 			attempts.add(model.getValue());
 			if (model.isEqual(rand)) {
 				break;
@@ -69,7 +68,7 @@ public class Controller {
 	// check is number appropriate: is it a number in the range [from, to]
 	public int inputNumberWithScanner(Scanner sc, int from, int to) {
 		int number = 0;
-		view.printMessage(view.INPUT_INT_NUMBER);
+		view.printDiap(model.getMin(), model.getMax());
 
 		while (true) {
 			boolean isError = false;
@@ -83,7 +82,8 @@ public class Controller {
 				sc.next();
 			}
 			if (isError) {
-				view.printMessage(view.WRONG_INPUT_NUMBER + view.INPUT_INT_NUMBER);
+				view.printMessage(view.WRONG_INPUT_NUMBER);
+				view.printDiap(model.getMin(), model.getMax());
 			} else {
 				break;
 			}
