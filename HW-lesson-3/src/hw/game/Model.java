@@ -13,7 +13,7 @@ public class Model {
 
 	// generate random value in range [start, end]
 	public int generateRandomValue(int start, int end) {
-		return (int) (Math.random() * (end - start + 1) + start);
+		return (int) (Math.random() * (end - start) + start);
 	}
 
 	// chooses what word must be added to output
@@ -42,7 +42,7 @@ public class Model {
 	}
 
 	public boolean isNumberInDiaposone(int value) {
-		return (value > minBorder) && (value < maxBorder);
+		return (value >= minBorder) && (value < maxBorder);
 	}
 
 	public List<Integer> getAttempts() {
