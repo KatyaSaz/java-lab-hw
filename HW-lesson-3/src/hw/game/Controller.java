@@ -28,9 +28,8 @@ public class Controller {
 		view.printMessage(view.START_WORDS);
 
 		while (true) {
-			int inputValue = inputNumberWithScanner(sc, model.getMinBorder(), model.getMaxBorder());
-			model.getAttempts().add(inputValue);
-			if (inputValue == model.getRandValue()) {
+			int inputValue = inputNumberWithScanner(sc);
+			if (model.compareNumbers(inputValue)) {
 				break;
 			} else {
 				view.printMessage(view.OUTPUT_DONT_GUESS + model.biggerOrLower(inputValue));
@@ -44,7 +43,7 @@ public class Controller {
 	}
 
 	// check is number appropriate: is it a number in the range [from, to]
-	public int inputNumberWithScanner(Scanner sc, int from, int to) {
+	public int inputNumberWithScanner(Scanner sc) {
 		int number = 0;
 		view.printDiap(model.getMinBorder(), model.getMaxBorder());
 
@@ -52,7 +51,7 @@ public class Controller {
 			boolean isError = false;
 			if (sc.hasNextInt()) {
 				number = sc.nextInt();
-				if ((number > to) || (number < from)) {
+				if (!model.isNumberInDiaposone(number)) {
 					isError = true;
 				}
 			} else {

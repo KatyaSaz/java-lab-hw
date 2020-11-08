@@ -8,7 +8,7 @@ public class Model {
 	private int randValue;
 	private int minBorder;
 	private int maxBorder;
-	
+
 	private List<Integer> attempts = new ArrayList<>();;
 
 	// generate random value in range [start, end]
@@ -17,27 +17,32 @@ public class Model {
 	}
 
 	// chooses what word must be added to output
-	public String biggerOrLower(int inputValue) {
-		return (compareNumbers(inputValue) ? GlobalConstants.BIGGER : GlobalConstants.LOWER);
+	public String biggerOrLower(int value) {
+		return ((value < randValue) ? GlobalConstants.BIGGER : GlobalConstants.LOWER);
 	}
 
 	// change value of borders
-	// if input < rand - true
-	// if input > rand- false
 	public boolean compareNumbers(int value) {
+		attempts.add(value);
+		if (value == randValue) {
+			return true;
+		}
 		if (value < randValue) {
 			this.minBorder = value;
-			return true;
 		} else {
 			this.maxBorder = value;
-			return false;
 		}
+		return false;
 	}
 
 	// set initial value to min and max borders
 	public void setInitialBorders(int min, int max) {
 		this.minBorder = min;
 		this.maxBorder = max;
+	}
+
+	public boolean isNumberInDiaposone(int value) {
+		return (value > minBorder) && (value < maxBorder);
 	}
 
 	public List<Integer> getAttempts() {
