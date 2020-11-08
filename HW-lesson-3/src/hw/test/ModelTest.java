@@ -1,7 +1,6 @@
 package hw.test;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Assertions;
 
 import hw.game.GlobalConstants;
@@ -9,6 +8,23 @@ import hw.game.Model;
 
 public class ModelTest {
 
+	@Test
+	public void ifInitialBorderSetWrong() {
+		Model model = new Model();
+		model.setInitialBorders(GlobalConstants.START_MAX_BORDER, GlobalConstants.START_MIN_BORDER);
+		Assertions.assertEquals(GlobalConstants.START_MIN_BORDER, model.getMinBorder());
+		Assertions.assertEquals(GlobalConstants.START_MAX_BORDER, model.getMaxBorder());
+	}
+	
+	@Test
+	public void isNumberGenerateIfBordersSetWrong() {
+		Model model = new Model();
+		model.setInitialBorders(GlobalConstants.START_MIN_BORDER, GlobalConstants.START_MAX_BORDER);
+		Assertions.assertTrue(model.isNumberInDiaposone(
+				model.generateRandomValue(
+						GlobalConstants.START_MAX_BORDER, GlobalConstants.START_MIN_BORDER)));
+	}
+	
 	@Test
 	public void isNumberGeneratedInDiaposone() {
 		Model model = new Model();

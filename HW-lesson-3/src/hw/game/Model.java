@@ -14,6 +14,11 @@ public class Model {
 
 	// generate random value in range [start, end]
 	public int generateRandomValue(int start, int end) {
+		if (end < start) {
+			int tmp = start;
+			start = end;
+			end = tmp;
+		}
 		return (int) (Math.random() * (end - start) + start);
 	}
 
@@ -38,6 +43,11 @@ public class Model {
 
 	// set initial value to min and max borders
 	public void setInitialBorders(int min, int max) {
+		if (max < min) {
+			int tmp = min;
+			min = max;
+			max = tmp;
+		}
 		this.minBorder = min;
 		this.maxBorder = max;
 	}
