@@ -13,7 +13,7 @@ public class ModelTest {
 	public void isNumberGeneratedInDiaposone() {
 		Model model = new Model();
 		model.setInitialBorders(GlobalConstants.START_MIN_BORDER, GlobalConstants.START_MAX_BORDER);
-		int N = 10_000;
+		int N = 100_000;
 		int rand = 0;
 		for (int i = 0; i < N; i++) {
 			rand = model.generateRandomValue(GlobalConstants.START_MIN_BORDER, GlobalConstants.START_MAX_BORDER);
@@ -30,14 +30,13 @@ public class ModelTest {
 	}
 
 	@Test
-	public void isNumberWasGuess() {
+	public void isNumberWasGuessAndBordersChange() {
 		Model model = new Model();
 		model.setInitialBorders(GlobalConstants.START_MIN_BORDER, GlobalConstants.START_MAX_BORDER);
 		int value = 35;
 		int wrongValue = value + 3;
 		int wrongValue2 = value - 2;
 		int amountAttemptsMade = 3;
-
 		model.setRandValue(value);
 		
 		Assertions.assertFalse(model.compareNumbers(wrongValue));
