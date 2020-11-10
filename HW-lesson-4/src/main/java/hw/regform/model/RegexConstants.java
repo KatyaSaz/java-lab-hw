@@ -1,5 +1,9 @@
 package hw.regform.model;
 
+/**
+ * Interface, contains regexps
+ * @author Katya Sazonova
+ */
 public interface RegexConstants {
 	// regexp for 'name'
 	String REG_NAME_ENG = "^[A-Z][a-z]{2,15}$";

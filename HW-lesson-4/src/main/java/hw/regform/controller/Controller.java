@@ -9,17 +9,29 @@ import hw.regform.view.View;
 import static hw.regform.model.RegexConstants.*;
 import static hw.regform.view.TextPropertiesConstants.*;
 
+/**
+ * Class, that responsible for control part of MVC
+ * @author Katya Sazonova
+ */
 public class Controller {
 
 	private Model model;
 	private View view;
 
+	/**
+	 * Constructor of class (with parameters)
+	 * @param model - object, responsible for saving data
+	 * @param view - object, helps to output data on screen
+	 */
 	public Controller(Model model, View view) {
 		super();
 		this.model = model;
 		this.view = view;
 	}
 
+	/**
+	 * Start method, called from main (hw.regform.App)
+	 */
 	public void workMethod() {
 		Scanner sc = new Scanner(System.in);
 		User user = inputUser(sc);
@@ -27,6 +39,11 @@ public class Controller {
 		view.printResultStringBundle(user.toString());
 	}
 
+	/**
+	 * Method that create new 'user' all fills all fields by users input
+	 * @param sc - object, helps reading data from console
+	 * @return object 'user' with filled fields (all of them)
+	 */
 	public User inputUser(Scanner sc) {
 		UtilityController uc = new UtilityController(sc, view);
 		String locale = view.getCurrentLocal();

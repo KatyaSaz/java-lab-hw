@@ -1,5 +1,10 @@
 package hw.regform.view;
 
+/**
+ * Interface, contains variable names (for output),
+ * data of them is stored in resources files 
+ * @author Katya Sazonova
+ */
 public interface TextPropertiesConstants {
 	String INPUT_DATA = "input.data";
 	String WRONG_INPUT_DATA = "input.wrong.data";

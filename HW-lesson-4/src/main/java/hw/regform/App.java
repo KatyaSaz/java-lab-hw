@@ -5,14 +5,20 @@ import hw.regform.model.Model;
 import hw.regform.view.View;
 
 /**
- * Hello world!
+ * Main class
+ * @author Katya Sazonova
  *
  */
 public class App {
 
+	/**
+	 * Program entry point
+	 * @param args
+	 */
 	public static void main(String[] args) {
-		View view = new View();
-		Controller controller = new Controller(new Model(), view);
+		// initialisation
+		Controller controller = new Controller(new Model(), new View());
+		//start up
 		controller.workMethod();
 	}
 }

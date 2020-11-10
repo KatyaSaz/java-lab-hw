@@ -2,6 +2,7 @@
 
 bin/
 .settings/
+target/
 
 ### Eclipse Patch ###
 # Eclipse Core      
