@@ -28,9 +28,9 @@ public class UtilityController {
 	 * check is it appropriate for current condition (regexp), if it right - 
 	 * return inputed information, if not - ask to enter data again 
 	 * current regexp  
-	 * @param message
-	 * @param regexp
-	 * @return
+	 * @param message - name of variable from resource where request is situated
+	 * @param regexp - constant structure for checking correctness of input line
+	 * @return input data as string (if it passed checks)
 	 */
 	public String inputStringWithScanner(String message, String regexp) {
 		view.printInputStringBundle(message);

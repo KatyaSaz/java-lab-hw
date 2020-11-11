@@ -2,7 +2,7 @@ package hw.task1.game;
 
 public class Main {
 	public static void main(String[] args) {
-		//initialization
+		//Initialisation
 		Model model = new Model();
 		View view  = new View();
 		Controller controller  = new Controller(model, view);
