@@ -14,6 +14,7 @@ import static hw.regform.view.TextPropertiesConstants.OUPUT_DATA;
  */
 public class View {
 
+	private static String SPACE = " ";
 	private static String BUNDLE_NAME_MESSAGES = "messages";
 	public static ResourceBundle bundle;
 	private String currentLocal;
@@ -53,10 +54,11 @@ public class View {
 	 * @param messages - strings, that must be united 
 	 * @return concatenated line
 	 */
-	public String concatenateStrings(String... messages) {
+	public static String concatenateStrings(String... messages) {
 		StringBuilder contactStr = new StringBuilder();
 		for (String str : messages) {
-			contactStr = contactStr.append(str);
+			contactStr.append(str);
+			contactStr.append(SPACE);
 		}
 		return new String(contactStr);
 	}
@@ -100,5 +102,4 @@ public class View {
 		printMessage(concatenateStrings(
 				bundle.getString(OUPUT_DATA), message));
 	}
-
 }

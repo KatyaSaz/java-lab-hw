@@ -3,6 +3,7 @@ package hw.regform.controller;
 import java.util.Scanner;
 
 import hw.regform.model.Model;
+import hw.regform.model.NotUniqueEmailException;
 import hw.regform.model.User;
 import hw.regform.view.View;
 
@@ -35,8 +36,12 @@ public class Controller {
 	public void workMethod() {
 		Scanner sc = new Scanner(System.in);
 		User user = inputUser(sc);
-		model.addUserToBase(user);
-		view.printResultStringBundle(user.toString());
+		try {
+			model.addUserToBase(user);
+			view.printResultStringBundle(user.toString());
+		} catch (NotUniqueEmailException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
